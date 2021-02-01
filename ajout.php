@@ -19,7 +19,7 @@
             <input type="date" id="date_changement" name="date_changement">
         </div>
         <div>
-            <select name="floor" id="floor">
+            <select name="floor" id="floor" name="floor">
                 <option value="">--Quel étage--</option>
                 <option value="floor0">Rez-de-chaussée</option>
                 <option value="floor1">Etage n°1</option>
@@ -36,7 +36,7 @@
             </select>
         </div>
         <div>
-            <select name="position" id="position">
+            <select name="position" id="position" name="position">
                 <option value="">--Quelle position--</option>
                 <option value="pos1">côté gauche</option>
                 <option value="pos2">côté droit</option>
@@ -54,17 +54,33 @@
 
 
     <?php
-        $server = "localhost";
-        $dbname = "ampoules";
-        $user = "root";
+        if (isset($_POST["date_changement"])){
+            $server = "localhost";
+            $dbname = "ampoules";
+            $user = "root";
 
-        try {
-            $dbc = new PDO("mysql:host=$server;dbname=$dbname", $user);
+            $date= $_POST["date_changement"];
+            $floor= $_POST["floor"];
+            $position= $_POST["position"];
+            $price= $_POST["price"];
 
+            try {
+                $dbc = new PDO("mysql:host=$server;dbname=$dbname", $user);
+                if (!empty($date) && !empty($floor) && !empty($position) && !empty($price)) {
+                    $sql = $dbc->prepare("INSERT INTO historiques(date_changement, floor, position, price)
+                    VALUES (:date_changement, :floor, :position, :price)");
 
-        } 
-        catch (PDOException $e) {
-            echo $e->getMessage();
+                    $sql->bindParam(':date_changement', $date);
+                    $sql->bindParam(':floor', $floor);
+                    $sql->bindParam(':position', $position);
+                    $sql->bindParam(':price', $price);
+                    $sql->execute();
+                }
+            }
+            
+            catch (PDOException $e) {
+                echo "Erreur : ". $e->getMessage();
+            }
         }
     ?>
 </body>
