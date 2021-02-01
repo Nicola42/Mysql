@@ -40,6 +40,7 @@ nav a{
     color: rgb(0, 0, 0);
     border-bottom: 2px solid transparent;
     padding: 15px 0px;
+    font-size: 20px;
 }
 
 nav a:hover{
