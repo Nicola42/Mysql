@@ -19,7 +19,7 @@
             <input type="date" id="date_changement" name="date_changement">
         </div>
         <div>
-            <select name="floor" id="floor" name="floor">
+            <select name="floor" id="floor" name="floor_etage">
                 <option value="">--Quel étage--</option>
                 <option value="floor0">Rez-de-chaussée</option>
                 <option value="floor1">Etage n°1</option>
@@ -36,7 +36,7 @@
             </select>
         </div>
         <div>
-            <select name="position" id="position" name="position">
+            <select name="position" id="position" name="position_couloir">
                 <option value="">--Quelle position--</option>
                 <option value="pos1">côté gauche</option>
                 <option value="pos2">côté droit</option>
@@ -55,26 +55,26 @@
 
     <?php
         if (isset($_POST["date_changement"])){
-            $server = "localhost";
-            $dbname = "ampoules";
+            $servername = "localhost";
+            $dataname = "ampoules";
             $user = "root";
-            $date= $_POST["date_changement"];
-            $floor= $_POST["floor"];
-            $position= $_POST["position"];
-            $price= $_POST["price"];
+            $date_changement = $_POST["date_changement"];
+            $floor_etage = $_POST["floor_etage"];
+            $position_couloir = $_POST["position_couloir"];
+            $price = $_POST["price"];
 
             try {
-                $dbc = new PDO("mysql:host=$server; dbname=$dbname", $user);
+                $dbc = new PDO("mysql:host=$servername; dbname=$dataname", $user);
 
                 if (!empty($date) && !empty($floor) && !empty($position) && !empty($price)) {
-                    $sql = $dbc->prepare ("INSERT INTO historiques (date_changement, floor, position, price)
-                    VALUES (:date_changement, :floor, :position, :price)");
+                    $var = $dbc->prepare ("INSERT INTO historiques (date_changement, floor_etage, position_couloir, price)
+                    VALUES (:date_changement, :floor_etage, :position_couloir, :price)");
 
-                    $sql->bindParam(':date_changement', $date);
-                    $sql->bindParam(':floor', $floor);
-                    $sql->bindParam(':position', $position);
-                    $sql->bindParam(':price', $price);
-                    $sql->execute();
+                    $var->bindParam(':date_changement', $date_changement);
+                    $var->bindParam(':floor', $floor_etage);
+                    $var->bindParam(':position', $position_couloir);
+                    $var->bindParam(':price', $price);
+                    $var->execute();
                 }
             }
             
