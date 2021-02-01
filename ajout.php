@@ -13,7 +13,7 @@
             <li><a href="ajout.php">Ajout</a></li>
         </ul>
     </nav>
-    <form action="#" method="post">
+    <form action="ajout.php" method="post">
         <div>
             <label for="date_changement">Date:</label>
             <input type="date" id="date_changement" name="date_changement">
@@ -58,16 +58,16 @@
             $server = "localhost";
             $dbname = "ampoules";
             $user = "root";
-
             $date= $_POST["date_changement"];
             $floor= $_POST["floor"];
             $position= $_POST["position"];
             $price= $_POST["price"];
 
             try {
-                $dbc = new PDO("mysql:host=$server;dbname=$dbname", $user);
+                $dbc = new PDO("mysql:host=$server; dbname=$dbname", $user);
+
                 if (!empty($date) && !empty($floor) && !empty($position) && !empty($price)) {
-                    $sql = $dbc->prepare("INSERT INTO historiques(date_changement, floor, position, price)
+                    $sql = $dbc->prepare ("INSERT INTO historiques (date_changement, floor, position, price)
                     VALUES (:date_changement, :floor, :position, :price)");
 
                     $sql->bindParam(':date_changement', $date);
