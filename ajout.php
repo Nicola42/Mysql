@@ -21,26 +21,26 @@
         <div>
             <select name="floor_etage" id="floor_etage">
                 <option value="">--Quel étage--</option>
-                <option value="floor0">Rez-de-chaussée</option>
-                <option value="floor1">Etage n°1</option>
-                <option value="floor2">Etage n°2</option>
-                <option value="floor3">Etage n°3</option>
-                <option value="floor4">Etage n°4</option>
-                <option value="floor5">Etage n°5</option>
-                <option value="floor6">Etage n°6</option>
-                <option value="floor7">Etage n°7</option>
-                <option value="floor8">Etage n°8</option>
-                <option value="floor9">Etage n°9</option>
-                <option value="floor10">Etage n°10</option>
-                <option value="floor11">Etage n°11</option>
+                <option value="rez-de-chaussée">Rez-de-chaussée</option>
+                <option value="Etage 1">Etage n°1</option>
+                <option value="Etage 2">Etage n°2</option>
+                <option value="Etage 3">Etage n°3</option>
+                <option value="Etage 4">Etage n°4</option>
+                <option value="Etage 5">Etage n°5</option>
+                <option value="Etage 6">Etage n°6</option>
+                <option value="Etage 7">Etage n°7</option>
+                <option value="Etage 8">Etage n°8</option>
+                <option value="Etage 9">Etage n°9</option>
+                <option value="Etage 10">Etage n°10</option>
+                <option value="Etage 11">Etage n°11</option>
             </select>
         </div>
         <div>
             <select name="position_couloir" id="position_couloir">
                 <option value="">--Quelle position--</option>
-                <option value="pos1">côté gauche</option>
-                <option value="pos2">côté droit</option>
-                <option value="pos3">fond</option>
+                <option value="Gauche">côté gauche</option>
+                <option value="Droite">côté droit</option>
+                <option value="Fond">fond</option>
             </select>
         </div>
         <div>
