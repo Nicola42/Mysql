@@ -21,7 +21,7 @@
         <div>
             <select name="floor_etage" id="floor_etage">
                 <option value="">--Quel étage--</option>
-                <option value="rez-de-chaussée">Rez-de-chaussée</option>
+                <option value="rez-de-chaussee">Rez-de-chaussee</option>
                 <option value="Etage 1">Etage n°1</option>
                 <option value="Etage 2">Etage n°2</option>
                 <option value="Etage 3">Etage n°3</option>
@@ -45,7 +45,7 @@
         </div>
         <div>
             <label for="price">Prix</label>
-            <input type="number" name="price" id="price">
+            <input type="number" name="price" id="price" step="0.1">
         </div>
         <div>
             <input type="submit" value="Ajouter">
