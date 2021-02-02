@@ -66,13 +66,13 @@
             try {
                 $dbc = new PDO("mysql:host=$servername; dbname=$dataname", $user);
 
-                if (!empty($date) && !empty($floor) && !empty($position) && !empty($price)) {
+                if (!empty($date_changement) && !empty($floor_etage) && !empty($position_couloir) && !empty($price)) {
                     $var = $dbc->prepare ("INSERT INTO historiques (date_changement, floor_etage, position_couloir, price)
                     VALUES (:date_changement, :floor_etage, :position_couloir, :price)");
 
                     $var->bindParam(':date_changement', $date_changement);
-                    $var->bindParam(':floor', $floor_etage);
-                    $var->bindParam(':position', $position_couloir);
+                    $var->bindParam(':floor_etage', $floor_etage);
+                    $var->bindParam(':position_couloir', $position_couloir);
                     $var->bindParam(':price', $price);
                     $var->execute();
                 }
