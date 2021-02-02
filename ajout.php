@@ -19,7 +19,7 @@
             <input type="date" id="date_changement" name="date_changement">
         </div>
         <div>
-            <select name="floor" id="floor" name="floor_etage">
+            <select name="floor_etage" id="floor_etage">
                 <option value="">--Quel étage--</option>
                 <option value="floor0">Rez-de-chaussée</option>
                 <option value="floor1">Etage n°1</option>
@@ -36,7 +36,7 @@
             </select>
         </div>
         <div>
-            <select name="position" id="position" name="position_couloir">
+            <select name="position_couloir" id="position_couloir">
                 <option value="">--Quelle position--</option>
                 <option value="pos1">côté gauche</option>
                 <option value="pos2">côté droit</option>
