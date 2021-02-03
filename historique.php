@@ -18,16 +18,6 @@
         Historique
     </h1>
 
-    <!-- <table>
-        <tr>
-            <th>ID</th>
-            <th>Date changement</th>
-            <th>étage</th>
-            <th>Position</th>
-            <th>Prix</th>
-        </tr>
-    </table> -->
-
     <?php
         $servername = "localhost";
         $dataname = "ampoules";

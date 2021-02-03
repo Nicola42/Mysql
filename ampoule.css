@@ -48,9 +48,7 @@ nav a:hover{
     border-bottom: 2px solid rgb(255, 0, 0);
 }
 
+
 section{
     display: flex;
 }
-/* .colonne{
-    float: left;
-} */
