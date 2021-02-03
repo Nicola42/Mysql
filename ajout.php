@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="style.css">
     <title>Ajouter</title>
 </head>
-<body>
+<body class="ajout">
     <nav>
         <ul>
             <li><a href="historique.php">Historique</a></li>
             <li><a href="ajout.php">Ajout</a></li>
         </ul>
     </nav>
-    <form action="ajout.php" method="post">
+    <form action="#" method="post">
         <div>
             <label for="date_changement">Date:</label>
             <input type="date" id="date_changement" name="date_changement">

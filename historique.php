@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="style.css">
     <title>Historique</title>
 </head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="historique.php">Historique</a></li>
-            <li><a href="ajout.php">Ajout</a></li>
-        </ul>
-    </nav>
+<body class="historique">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="historique.php">Historique</a></li>
+                <li><a href="ajout.php">Ajout</a></li>
+            </ul>
+        </nav>
+    </header>
+
     
-    <h1>
-        Historique
-    </h1>
 
     <?php
         $servername = "localhost";
@@ -31,47 +31,64 @@
                 die();
             }
         
+        $historique4=$dbc->query("SELECT id FROM historiques");
         $historique=$dbc->query("SELECT date_changement FROM historiques");
         $historique1=$dbc->query("SELECT floor_etage FROM historiques");
         $historique2=$dbc->query("SELECT position_couloir FROM historiques");
         $historique3=$dbc->query("SELECT price FROM historiques");
     ?>
-    <section>
-        <div class="colonne">
-            <p>Date de changement</p>
-            <div>
-                <?php foreach($historique as $value) : ?>
-                <?= $value['date_changement']; ?> <br>
-                <?php endforeach; ?>
+    <main>
+        <section>
+            <div class="colonne">
+                <p>Id</p>
+                <div>
+                    <?php foreach($historique4 as $value) : ?>
+                    <?= $value['id']; ?> <br>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
+            <div class="colonne">
+                <p>Date de changement</p>
+                <div>
+                    <?php foreach($historique as $value) : ?>
+                    <?= $value['date_changement']; ?> <br>
+                    <?php endforeach; ?>
+                </div>
+            </div>
 
-        <div class="colonne">
-            <p>Etage</p>
-            <div>
-                <?php foreach($historique1 as $value) : ?>
-                <?= $value['floor_etage']; ?> <br>
-                <?php endforeach; ?>
+            <div class="colonne">
+                <p>Etage</p>
+                <div>
+                    <?php foreach($historique1 as $value) : ?>
+                    <?= $value['floor_etage']; ?> <br>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
 
-        <div class="colonne">
-            <p>Position</p>
-            <div>
-                <?php foreach($historique2 as $value) : ?>
-                <?= $value['position_couloir']; ?> <br>
-                <?php endforeach; ?>
+            <div class="colonne">
+                <p>Position</p>
+                <div>
+                    <?php foreach($historique2 as $value) : ?>
+                    <?= $value['position_couloir']; ?> <br>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
 
-        <div class="colonne">
-            <p>Prix</p>
-            <div>
-                <?php foreach($historique3 as $value) : ?>
-                <?= $value['price']; ?> <br>
-                <?php endforeach; ?>
+            <div class="colonne">
+                <p>Prix</p>
+                <div>
+                    <?php foreach($historique3 as $value) : ?>
+                    <?= $value['price']; ?> <br>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <section>
+            <a href="ajout.php">Modifier</a>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>
