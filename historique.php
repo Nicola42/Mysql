@@ -18,7 +18,7 @@
         Historique
     </h1>
 
-    <table>
+    <!-- <table>
         <tr>
             <th>ID</th>
             <th>Date changement</th>
@@ -26,40 +26,62 @@
             <th>Position</th>
             <th>Prix</th>
         </tr>
-    </table>
+    </table> -->
 
     <?php
-        // $servername = "localhost";
-        // $dataname = "ampoules";
-        // $user = "root";
-        define('DATABASE', 'ampoules');
-        define('USER', 'root');
-        define('PWD', '');
-        define('HOST', 'localhost');
+        $servername = "localhost";
+        $dataname = "ampoules";
+        $user = "root";
 
         try {
-                $dbc = new PDO('mysql:host='.HOST.';dbname='. DATABASE, USER, PWD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-
-                $var = 'SELECT id, date_changement, floor_etage, position_couloir, price FROM historiques';
-                $sth = $dbc->prepare($var);
-                $sth->execute();
-                $datas = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-                foreach( $datas as $data){
-                    echo'<tr>';
-                        echo'<td>'.$data['id']. ' '.'</td>';
-                        echo'<td>'.$data['date_changement'].' '.'</td>';
-                        echo'<td>'.$data['floor_etage'].' '.'</td>';
-                        echo'<td>'.$data['position_couloir'].' '.'</td>';
-                        echo'<td>'.$data['price'].' '.'</td>';
-                        echo '<td><a href="ajout.php?edit=1&id='.$data['id'].' '.'">Modifier</a> <a href="ajout.php?id='.$data['id'].'">Supprimer<a><td>';
-                        echo '</tr>';
-                }
+                $dbc = new PDO("mysql:host=$servername; dbname=$dataname", $user);
             } 
         catch (PDOException $e) {
                 print "Erreur !: " . $e->getMessage() . "<br/>";
                 die();
             }
+        
+        $historique=$dbc->query("SELECT date_changement FROM historiques");
+        $historique1=$dbc->query("SELECT floor_etage FROM historiques");
+        $historique2=$dbc->query("SELECT position_couloir FROM historiques");
+        $historique3=$dbc->query("SELECT price FROM historiques");
     ?>
+    <section>
+        <div class="colonne">
+            <p>Date de changement</p>
+            <div>
+                <?php foreach($historique as $value) : ?>
+                <?= $value['date_changement']; ?> <br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="colonne">
+            <p>Etage</p>
+            <div>
+                <?php foreach($historique1 as $value) : ?>
+                <?= $value['floor_etage']; ?> <br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="colonne">
+            <p>Position</p>
+            <div>
+                <?php foreach($historique2 as $value) : ?>
+                <?= $value['position_couloir']; ?> <br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="colonne">
+            <p>Prix</p>
+            <div>
+                <?php foreach($historique3 as $value) : ?>
+                <?= $value['price']; ?> <br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
