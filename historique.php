@@ -15,78 +15,40 @@
             </ul>
         </nav>
     </header>
-
-    
-
     <?php
-        $servername = "localhost";
-        $dataname = "ampoules";
-        $user = "root";
-
-        try {
-                $dbc = new PDO("mysql:host=$servername; dbname=$dataname", $user);
-            } 
-        catch (PDOException $e) {
-                print "Erreur !: " . $e->getMessage() . "<br/>";
-                die();
-            }
         
-        $historique4=$dbc->query("SELECT id FROM historiques");
-        $historique=$dbc->query("SELECT date_changement FROM historiques");
-        $historique1=$dbc->query("SELECT floor_etage FROM historiques");
-        $historique2=$dbc->query("SELECT position_couloir FROM historiques");
-        $historique3=$dbc->query("SELECT price FROM historiques");
+        require_once('connect.php');
+
+
+        $req=$dbc->query("SELECT * FROM historiques");
     ?>
-    <main>
-        <section>
-            <div class="colonne">
-                <p>Id</p>
-                <div>
-                    <?php foreach($historique4 as $value) : ?>
-                    <?= $value['id']; ?> <br>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="colonne">
-                <p>Date de changement</p>
-                <div>
-                    <?php foreach($historique as $value) : ?>
-                    <?= $value['date_changement']; ?> <br>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <div class="colonne">
-                <p>Etage</p>
-                <div>
-                    <?php foreach($historique1 as $value) : ?>
-                    <?= $value['floor_etage']; ?> <br>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <div class="colonne">
-                <p>Position</p>
-                <div>
-                    <?php foreach($historique2 as $value) : ?>
-                    <?= $value['position_couloir']; ?> <br>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <div class="colonne">
-                <p>Prix</p>
-                <div>
-                    <?php foreach($historique3 as $value) : ?>
-                    <?= $value['price']; ?> <br>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
-        <section>
-            <a href="ajout.php">Modifier</a>
-        </section>
-    </main>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Floor</th>
+                <th scope="col">Position</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach($req as $value) :
+            ?>
+                <tr>
+                <td><?= $value['date_changement']; ?></td>
+                <td><?= $value['floor_etage']; ?></td> 
+                <td><?= $value['position_couloir']; ?></td> 
+                <td><?= $value['price']; ?></td> 
+                <td>
+                    <a href="delete.php?id=<?= $value['id']; ?>">Supprimer</a>
+                </td>
+                </tr>
+            <?php
+                endforeach;
+            ?>        
+        </tbody>
+    </table>
     <footer>
 
     </footer>
