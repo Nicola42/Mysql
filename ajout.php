@@ -14,6 +14,7 @@
         </ul>
     </nav>
     <form action="insert.php" method="POST">
+        
         <div>
             <label for="date_changement">Date:</label>
             <input type="date" id="date_changement" name="date_changement">

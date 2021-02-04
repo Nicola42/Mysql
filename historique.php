@@ -29,6 +29,7 @@
                 <th scope="col">Floor</th>
                 <th scope="col">Position</th>
                 <th scope="col">Price</th>
+                <th scope="col">Supprimer / Modifier</th>
             </tr>
         </thead>
         <tbody>
