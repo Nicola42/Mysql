@@ -9,49 +9,61 @@
 <body class="ajout">
     <nav>
         <ul>
-            <li><a href="historique.php">Historique</a></li>
+            <li><a href="index.php">Historique</a></li>
             <li><a href="ajout.php">Ajout</a></li>
         </ul>
     </nav>
+    
     <form action="insert.php" method="POST">
+        <?php
+            if(isset($_GET['id'])) :
+        ?>
+            <input type="hidden" value="<?= $_GET['id']; ?>" name="id">
+        <?php
+            require_once('connect.php');
+            $req = $dbc->prepare('SELECT `id`, `date_changement`, `floor_etage`, `position_couloir`, `price` FROM `historiques` WHERE `id` = :id');
+            $req->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+            $req->execute();
+            $data = $req->fetch();
+            endif;
+        ?>
         
         <div>
             <label for="date_changement">Date:</label>
-            <input type="date" id="date_changement" name="date_changement">
+            <input type="date" id="date_changement" name="date_changement" value="<?= $data['date_changement'] ?? '' ?>"> <br>
         </div>
         <div>
-            <select name="floor_etage" id="floor_etage">
+            <select name="floor_etage" id="floor_etage" value="<?= $data['floor_etage'] ?? '' ?>"> <br>
                 <option value="">--Quel étage--</option>
-                <option value="rez-de-chaussee">Rez-de-chaussee</option>
-                <option value="Etage 1">Etage n°1</option>
-                <option value="Etage 2">Etage n°2</option>
-                <option value="Etage 3">Etage n°3</option>
-                <option value="Etage 4">Etage n°4</option>
-                <option value="Etage 5">Etage n°5</option>
-                <option value="Etage 6">Etage n°6</option>
-                <option value="Etage 7">Etage n°7</option>
-                <option value="Etage 8">Etage n°8</option>
-                <option value="Etage 9">Etage n°9</option>
-                <option value="Etage 10">Etage n°10</option>
-                <option value="Etage 11">Etage n°11</option>
+                <option value="rez-de-chaussee" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "rez-de-chaussee")? "selected" : "" ?>>Rez-de-chaussee</option>
+                <option value="Etage 1" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 1")? "selected" : "" ?>>Etage n°1</option>
+                <option value="Etage 2" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 2")? "selected" : "" ?>>Etage n°2</option>
+                <option value="Etage 3" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 3")? "selected" : "" ?>>Etage n°3</option>
+                <option value="Etage 4" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 4")? "selected" : "" ?>>Etage n°4</option>
+                <option value="Etage 5" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 5")? "selected" : "" ?>>Etage n°5</option>
+                <option value="Etage 6" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 6")? "selected" : "" ?>>Etage n°6</option>
+                <option value="Etage 7" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 7")? "selected" : "" ?>>Etage n°7</option>
+                <option value="Etage 8" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 8")? "selected" : "" ?>>Etage n°8</option>
+                <option value="Etage 9" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 9")? "selected" : "" ?>>Etage n°9</option>
+                <option value="Etage 10" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 10")? "selected" : "" ?>>Etage n°10</option>
+                <option value="Etage 11" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 11")? "selected" : "" ?>>Etage n°11</option>
             </select>
         </div>
         <div>
-            <select name="position_couloir" id="position_couloir">
+            <select name="position_couloir" id="position_couloir" value="<?= $data['position_couloir'] ?? '' ?>"> <br>
                 <option value="">--Quelle position--</option>
-                <option value="Gauche">côté gauche</option>
-                <option value="Droite">côté droit</option>
-                <option value="Fond">fond</option>
+                <option value="Gauche" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Gauche")? "selected" : "" ?>>côté gauche</option>
+                <option value="Droite" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Droite")? "selected" : "" ?>>côté droit</option>
+                <option value="Fond" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Fond")? "selected" : "" ?>>fond</option>
             </select>
         </div>
         <div>
             <label for="price">Prix</label>
-            <input type="number" name="price" id="price" step="0.1">
+            <input type="number" name="price" id="price" step="0.1" value="<?= $data['price'] ?? '' ?>"> <br>
         </div>
         <div>
             <input type="submit" value="Ajouter">
         </div>
     </form>
-
 </body>
 </html>

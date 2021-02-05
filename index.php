@@ -10,7 +10,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="historique.php">Historique</a></li>
+                <li><a href="index.php">Historique</a></li>
                 <li><a href="ajout.php">Ajout</a></li>
             </ul>
         </nav>
@@ -43,6 +43,7 @@
                 <td><?= $value['price']; ?></td> 
                 <td>
                     <a href="delete.php?id=<?= $value['id']; ?>">Supprimer</a>
+                    <a href="ajout.php?id=<?= $value['id']; ?>">Modifier</a>
                 </td>
                 </tr>
             <?php

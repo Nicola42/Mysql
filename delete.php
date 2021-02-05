@@ -12,7 +12,7 @@
         }
         
 
-        header('Location: historique.php');
+        header('Location: index.php');
     } else {
         $erreur = 'Désolé l\'ID n\'existe pas';
     }
