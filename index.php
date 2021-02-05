@@ -37,13 +37,13 @@
                 foreach($req as $value) :
             ?>
                 <tr>
-                <td><?= $value['date_changement']; ?></td>
+                <td scope="row"><?= $value['date_changement']; ?></td>
                 <td><?= $value['floor_etage']; ?></td> 
                 <td><?= $value['position_couloir']; ?></td> 
                 <td><?= $value['price']; ?></td> 
                 <td>
-                    <a href="delete.php?id=<?= $value['id']; ?>">Supprimer</a>
-                    <a href="ajout.php?id=<?= $value['id']; ?>">Modifier</a>
+                    <a href="delete.php?id=<?= $value['id']; ?>">Supprimer/</a>
+                    <a href="ajout.php?id=<?= $value['id']; ?>">/Modifier</a>
                 </td>
                 </tr>
             <?php

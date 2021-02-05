@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Ajouter</title>
 </head>
 <body class="ajout">
@@ -28,12 +29,13 @@
             endif;
         ?>
         
-        <div>
-            <label for="date_changement">Date:</label>
+        <div class="input-group mb-3">
+            <label for="date_changement" class="input-group-text">Date:</label>
             <input type="date" id="date_changement" name="date_changement" value="<?= $data['date_changement'] ?? '' ?>"> <br>
         </div>
-        <div>
-            <select name="floor_etage" id="floor_etage" value="<?= $data['floor_etage'] ?? '' ?>"> <br>
+        <div class="input-group mb-3">
+            <label for="floor_etage" class="input-group-text"> étages</label>
+            <select  name="floor_etage" id="floor_etage" value="<?= $data['floor_etage'] ?? '' ?>"> <br>
                 <option value="">--Quel étage--</option>
                 <option value="rez-de-chaussee" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "rez-de-chaussee")? "selected" : "" ?>>Rez-de-chaussee</option>
                 <option value="Etage 1" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 1")? "selected" : "" ?>>Etage n°1</option>
@@ -49,20 +51,21 @@
                 <option value="Etage 11" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 11")? "selected" : "" ?>>Etage n°11</option>
             </select>
         </div>
-        <div>
-            <select name="position_couloir" id="position_couloir" value="<?= $data['position_couloir'] ?? '' ?>"> <br>
+        <div class="input-group mb-3">
+            <label for="position_couloir" class="input-group-text">couloir</label>
+            <select  name="position_couloir" id="position_couloir" value="<?= $data['position_couloir'] ?? '' ?>"> <br>
                 <option value="">--Quelle position--</option>
                 <option value="Gauche" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Gauche")? "selected" : "" ?>>côté gauche</option>
                 <option value="Droite" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Droite")? "selected" : "" ?>>côté droit</option>
                 <option value="Fond" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Fond")? "selected" : "" ?>>fond</option>
             </select>
         </div>
-        <div>
-            <label for="price">Prix</label>
+        <div class="input-group mb-3">
+            <label for="price" class="input-group-text">Prix</label>
             <input type="number" name="price" id="price" step="0.1" value="<?= $data['price'] ?? '' ?>"> <br>
         </div>
         <div>
-            <input type="submit" value="Ajouter">
+            <input type="submit" value="Ajouter" class="btn btn-primary">
         </div>
     </form>
 </body>

@@ -48,6 +48,22 @@ nav a:hover{
     position: relative;
 }
 
+.historique > table{
+    width: 100%;
+    line-height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+td, th{
+    text-align: center;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+a{
+    padding: 5px;
+    color: darkred;
+}
+
 .ajout{
     background-color: rgb(80, 79, 79);
     position: relative;
