@@ -31,7 +31,7 @@
            
         
 
-        header('Location: index.php');
+        header('Location: list.php');
     } 
     else{
         $erreur = 'Désolé les champs ne sont pas remplis !';

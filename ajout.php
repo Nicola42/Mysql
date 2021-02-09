@@ -10,7 +10,7 @@
 <body class="ajout">
     <nav>
         <ul>
-            <li><a href="index.php">Historique</a></li>
+            <li><a href="list.php">Historique</a></li>
             <li><a href="ajout.php">Ajout</a></li>
         </ul>
     </nav>
@@ -31,11 +31,11 @@
         
         <div class="input-group mb-3">
             <label for="date_changement" class="input-group-text">Date:</label>
-            <input type="date" id="date_changement" name="date_changement" value="<?= $data['date_changement'] ?? '' ?>"> <br>
+            <input type="date" id="date_changement" name="date_changement" value="<?= $data['date_changement'] ?? '' ?>">
         </div>
-        <div class="input-group mb-3">
-            <label for="floor_etage" class="input-group-text"> étages</label>
-            <select  name="floor_etage" id="floor_etage" value="<?= $data['floor_etage'] ?? '' ?>"> <br>
+        <div class="input-group mb-3 select">
+            <label for="floor_etage" class="input-group-text"> étages:</label>
+            <select  name="floor_etage" id="floor_etage" value="<?= $data['floor_etage'] ?? '' ?>">
                 <option value="">--Quel étage--</option>
                 <option value="rez-de-chaussee" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "rez-de-chaussee")? "selected" : "" ?>>Rez-de-chaussee</option>
                 <option value="Etage 1" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 1")? "selected" : "" ?>>Etage n°1</option>
@@ -51,9 +51,9 @@
                 <option value="Etage 11" <?= (isset($data['floor_etage']) && $data['floor_etage'] == "Etage 11")? "selected" : "" ?>>Etage n°11</option>
             </select>
         </div>
-        <div class="input-group mb-3">
-            <label for="position_couloir" class="input-group-text">couloir</label>
-            <select  name="position_couloir" id="position_couloir" value="<?= $data['position_couloir'] ?? '' ?>"> <br>
+        <div class="input-group mb-3 select">
+            <label for="position_couloir" class="input-group-text">couloir:</label>
+            <select  name="position_couloir" id="position_couloir" value="<?= $data['position_couloir'] ?? '' ?>">
                 <option value="">--Quelle position--</option>
                 <option value="Gauche" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Gauche")? "selected" : "" ?>>côté gauche</option>
                 <option value="Droite" <?= (isset($data['position_couloir']) && $data['position_couloir'] == "Droite")? "selected" : "" ?>>côté droit</option>
@@ -61,10 +61,10 @@
             </select>
         </div>
         <div class="input-group mb-3">
-            <label for="price" class="input-group-text">Prix</label>
-            <input type="number" name="price" id="price" step="0.1" value="<?= $data['price'] ?? '' ?>"> <br>
+            <label for="price" class="input-group-text">Prix:</label>
+            <input type="number" name="price" id="price" step="0.1" value="<?= $data['price'] ?? '' ?>">
         </div>
-        <div>
+        <div class="sub">
             <input type="submit" value="Ajouter" class="btn btn-primary">
         </div>
     </form>

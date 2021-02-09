@@ -12,7 +12,7 @@
         }
         
 
-        header('Location: index.php');
+        header('Location: list.php');
     } else {
         $erreur = 'Désolé l\'ID n\'existe pas';
     }

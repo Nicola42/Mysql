@@ -1,58 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Historique</title>
-</head>
-<body class="historique">
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">Historique</a></li>
-                <li><a href="ajout.php">Ajout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <?php
+<?php
+  define('LOGIN','root');
+  define('PASSWORD','toor');
+  $errorMessage = '';
+ 
+  // Test de l'envoi du formulaire
+  if(!empty($_POST)) 
+  {
+    // Les identifiants sont transmis ?
+    if(!empty($_POST['login']) && !empty($_POST['password'])) 
+    {
+      // Sont-ils les mêmes que les constantes ?
+      if($_POST['login'] !== LOGIN) 
+      {
+        $errorMessage = 'Mauvais login !';
+      }
+        elseif($_POST['password'] !== PASSWORD) 
+      {  
+        $errorMessage = 'Mauvais password !';
+      }
+        else
+      {
+        // On ouvre la session
+        session_start();
+        // On enregistre le login en session
+        $_SESSION['login'] = LOGIN;
+        // On redirige vers le fichier index.php
+        header('Location: list.php');
+        exit();
+      }
+    }
+      else
+    {
+      $errorMessage = 'Veuillez inscrire vos identifiants svp !';
+    }
+  }
+?>
+<html lang = "en">
+   
+   <head>
+      <title>login</title>
+      <link href = "log.css" rel = "stylesheet">
+      
+   </head>
+	
+   <body>
+      
+        <div class="log">
+	        <h1>Login</h1>
+            <form method="post" action="index.php">
+                <label for="login"></label>
+                <input type="text" id ="login" name="login" placeholder="Username" required="required" />
+
+                <label for="password"></label>
+                <input type="password" name="password" id ="password" placeholder="Password" required="required" />
+
+                <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+            </form>
+            Click here to clean <a href = "logout.php" tite = "Logout">Session.
+        </div> 
         
-        require_once('connect.php');
-
-
-        $req=$dbc->query("SELECT * FROM historiques");
-    ?>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Floor</th>
-                <th scope="col">Position</th>
-                <th scope="col">Price</th>
-                <th scope="col">Supprimer / Modifier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                foreach($req as $value) :
-            ?>
-                <tr>
-                <td scope="row"><?= $value['date_changement']; ?></td>
-                <td><?= $value['floor_etage']; ?></td> 
-                <td><?= $value['position_couloir']; ?></td> 
-                <td><?= $value['price']; ?></td> 
-                <td>
-                    <a href="delete.php?id=<?= $value['id']; ?>">Supprimer/</a>
-                    <a href="ajout.php?id=<?= $value['id']; ?>">/Modifier</a>
-                </td>
-                </tr>
-            <?php
-                endforeach;
-            ?>        
-        </tbody>
-    </table>
-    <footer>
-
-    </footer>
-</body>
+   </body>
 </html>
